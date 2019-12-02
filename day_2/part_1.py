@@ -4,7 +4,7 @@ def load_input_list():
 
 
 def get_op_code_parameters(current_index, input_list):
-    return input_list[current_index + 1], input_list[current_index + +2], input_list[current_index + +3]
+    return input_list[current_index + 1], input_list[current_index + 2], input_list[current_index + 3]
 
 
 def op_code_instruction(index_1, index_2, result_index, operation: str, input_list):
