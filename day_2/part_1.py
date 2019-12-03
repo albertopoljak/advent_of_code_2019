@@ -1,5 +1,5 @@
 def load_input_list():
-    with open("part_1_input.txt") as f:
+    with open("input.txt") as f:
         return [int(number) for number in f.read().split(",")]
 
 
