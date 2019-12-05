@@ -2,11 +2,11 @@ with open("day_1.txt") as f:
     data = f.readlines()
 
 
-def required_fuel(module_mass: int):
+def required_fuel(module_mass: int) -> int:
     return int(module_mass/3) - 2
 
 
-def fuel_needed_for_fuel(fuel: int):
+def fuel_needed_for_fuel(fuel: int) -> int:
     fuel_needed = 0
     while True:
         fuel = required_fuel(fuel)

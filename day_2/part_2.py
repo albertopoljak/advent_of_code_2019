@@ -2,7 +2,7 @@ import itertools
 from day_2 import part_1
 
 
-original_list = part_1.load_input_list()
+original_list = part_1.load_integer_list()
 
 
 for noun, verb in itertools.product(range(100), list(reversed(range(100)))):
