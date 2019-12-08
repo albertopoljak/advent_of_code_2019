@@ -1,21 +1,24 @@
 from day_4.part_1 import password_rule_2
 import cProfile
+from typing import List
 
 
-def count_valid_passwords(range_start: int, range_end: int):
+def count_valid_passwords(range_start: int, range_end: int) -> int:
     return sum(is_password_valid(f"{i}") for i in range(range_start, range_end))
 
 
-def is_password_valid(password: str):
+def is_password_valid(password: str) -> bool:
     rules = (password_rule_2, password_rule_1)
     return all(rule(password) for rule in rules)
 
 
-def password_rule_1(password: str):
+def password_rule_1(password: str) -> bool:
     """
-    Two adjacent digits are the same (like 22 in 122345).
-    :param password:
-    :return:
+    Two adjacent digits are the same (like 22 in 122345) AND are not part of a larger group of matching digits.
+    Examples:
+
+    :param password: str
+    :return: bool
     """
     if not password:
         return False
@@ -26,17 +29,20 @@ def password_rule_1(password: str):
     return False
 
 
-def is_double_and_not_part_of_larger_group(password: str, index: int):
+def is_double_and_not_part_of_larger_group(password: str, index: int) -> bool:
     return get_4_characters_surrounding_index(password, index).count(password[index]) == 1
 
 
-def get_4_characters_surrounding_index(password: str, index: int):
+def get_4_characters_surrounding_index(password: str, index: int) -> List[str]:
     """
     2 left 2 right
-    :param password:
-    :param index:
-    :return:
+    :param password: str
+    :param index: int, index representing index from param password
+    :return: list of strings with minimum 2 elements and maximum 4. Elements represent characters from param string
+             at index positions [index -2, index -1, index +1, index +2]. If previous/next character is not available
+             it is not added (example if index is start position or end position).
     """
+
     surrounding_chars = []
 
     if index == 1:
