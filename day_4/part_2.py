@@ -2,6 +2,18 @@ from day_4.part_1 import password_rule_2
 import cProfile
 from typing import List
 
+"""
+This can go 50% faster by changing is_password_valid not to use generator but a simple for loop.
+Reason is it creates new generator for each call (lots of calls).
+
+def is_password_valid(password: str) -> bool:
+    for rule in rules:
+        if not rule(password):
+            return False
+    return True
+
+"""
+
 
 def count_valid_passwords(range_start: int, range_end: int) -> int:
     return sum(is_password_valid(f"{i}") for i in range(range_start, range_end))
